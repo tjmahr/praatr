@@ -127,24 +127,26 @@ praat <- function(command, arguments = list(), input = NULL, output = NULL,
   # - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - =
   # = - = - = - = - = - = - = - = - = - = - = - = - = - = - = - = -
 
-  if(CommandType=="Query"){
+  if (CommandType == "Query") {
 
-  # Argument [4]
-  # If something is specified for 'output', issue a warning that the specified output argument has been ignored, but still proceed normally.
-  if( !missing(output) ){
-  warning("For Query commands, leave 'output' unspecified; the supplied value has been ignored.")
-  }else{ # if it is indeed missing (as it should be), then fill it with a dummy 'X' just to make sure something gets passed to the Praat form.
-  output="X"
-  } # End if/else
+    # If something is specified for 'output', issue a warning that the specified
+    # output argument has been ignored, but still proceed normally.
+    if (!is.na(output)) {
+      warning("For Query commands, leave 'output' unspecified; the supplied value has been ignored.")
+    } else {
+      # if it is indeed missing (as it should be), then fill it with a dummy 'X'
+      # just to make sure something gets passed to the Praat form.
+      output = "X"
+    }
 
   # Argument [5]
   # Argument 'overwrite' should be missing. If not, issue a warning.
-  if(!missing(overwrite)){warning("For Query commands, leave 'overwrite' unspecified; the supplied value has been ignored.")}
+  if(!is.na(overwrite)){warning("For Query commands, leave 'overwrite' unspecified; the supplied value has been ignored.")}
    # No need for dummy variable since not passed to Praat
 
   # Argument [6]
   # Argument 'filetype' should be missing. If not, issue a warning. If it is, fill it with a dummy 'X' so something can be passed to Praat
-  if(!missing(filetype)){warning("For Query commands, leave 'filetype' unspecified; the supplied value has been ignored.")}else{filetype="X"}
+  if(!is.na(filetype)){warning("For Query commands, leave 'filetype' unspecified; the supplied value has been ignored.")}else{filetype="X"}
 
   # Argument [7]
   # Fill in 'simplify' with its default of FALSE if left unspecified
