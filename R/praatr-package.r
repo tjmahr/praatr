@@ -4,4 +4,6 @@
 #'
 #' @name praatr
 #' @docType package
+#' @import assertthat
 NULL
+

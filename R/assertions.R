@@ -1,3 +1,5 @@
+require("assertthat")
+
 is_valid_command <- function(command) is.element(command, commands$CommandName)
 
 on_failure(is_valid_command) <- function(call, env) {

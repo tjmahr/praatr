@@ -31,7 +31,7 @@ http://www.gnu.org/licenses/.
 
 # Since this isn't a system/shell command, .libPaths() should work on all OSes in this context
 # SupportedCommands <- read.table(paste(.libPaths(),"PraatR","SupportedCommands.txt",sep="/"), sep="\t", header=TRUE, quote="")
-commands <- read.table("inst/SupportedCommands.txt", sep = "\t", header = TRUE, quote = "")
+commands <- read.table("../inst/SupportedCommands.txt", sep = "\t", header = TRUE, quote = "")
 
 PraatCommand <- function(command, type) {
   structure(list(Command = command, Type = type),
@@ -43,6 +43,8 @@ PraatCommand <- function(command, type) {
 # praat() function #
 ####################
 
+#' Execute a Praat command
+#'
 #' @param command A character string indicating what command should be executed.
 #'   This will be checked against the 'SupportedCommands' database, and if it's
 #'   not found there, an error message will be issued.
@@ -67,6 +69,8 @@ PraatCommand <- function(command, type) {
 #'   the result will (initially) be brought into R as a character string. The
 #'   user specifies this as TRUE or FALSE. This later gets translated into 1 or
 #'   0 when passed to Praat.
+#' @return (place-holder text)
+#' @export
 praat <- function(command, arguments = list(), input = NULL, output = NULL,
                   overwrite = NULL, filetype = "text", simplify = FALSE) {
 
@@ -75,7 +79,6 @@ praat <- function(command, arguments = list(), input = NULL, output = NULL,
   # First check whether the command is one of the official list of supported
   # ones (Note that, at present, this does not take into account the object
   # type, and only considers the command itself.)
-  require(assertthat)
   assert_that(is_valid_command(command))
 
 
